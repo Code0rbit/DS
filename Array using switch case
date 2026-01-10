@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a[5], choice, index, value;
+
+    cout << "Enter 5 elements:\n";
+    for (int i = 0; i < 5; i++)
+        cin >> a[i];
+
+    cout << "\n1. Sum of array";
+    cout << "\n2. Maximum value";
+    cout << "\n3. Minimum value";
+    cout << "\n4. Update element";
+    cout << "\n5. Delete element";
+    cout << "\nEnter your choice: ";
+    cin >> choice;
+
+    switch (choice)
+    {
+    case 1:   // Sum
+    {
+        int sum = 0;
+        for (int i = 0; i < 5; i++)
+            sum += a[i];
+        cout << "Sum = " << sum;
+        break;
+    }
+
+    case 2:   // Maximum
+    {
+        int max = a[0];
+        for (int i = 1; i < 5; i++)
+            if (a[i] > max)
+                max = a[i];
+        cout << "Maximum = " << max;
+        break;
+    }
+
+    case 3:   // Minimum
+    {
+        int min = a[0];
+        for (int i = 1; i < 5; i++)
+            if (a[i] < min)
+                min = a[i];
+        cout << "Minimum = " << min;
+        break;
+    }
+
+    case 4:   // Update
+    {
+        cout << "Enter index (0-4): ";
+        cin >> index;
+        cout << "Enter new value: ";
+        cin >> value;
+        a[index] = value;
+        cout << "Element updated.";
+        break;
+    }
+
+    case 5:   // Delete
+    {
+        cout << "Enter index (0-4): ";
+        cin >> index;
+        a[index] = 0;
+        cout << "Element deleted.";
+        break;
+    }
+
+    default:
+        cout << "Invalid choice";
+    }
+
+    return 0;
+}
