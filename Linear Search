@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+int main(){
+    int i ,n,m;
+
+    cout<<"enter size of array:";
+    cin>>m;
+    int a[m];
+
+    cout<<"enter array elements:";
+    for(i=0;i<m;i++){
+        cin>>a[i];
+    }
+
+    cout<<endl<<"enter searching element:";
+    cin>>n;
+    for(i=0;i<m;i++){
+        if(a[i] == n){
+            cout<<"elements is found"<<endl;
+            return 0;
+            break;
+        }
+    }
+    cout<<"element is not found";
+
+    return 0;
+
+}
