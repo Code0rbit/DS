@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+struct node *head = NULL;
+
+// Insert at beginning
+void insert()
+{
+    struct node *newnode;
+    newnode = (struct node*)malloc(sizeof(struct node));
+
+    printf("Enter value: ");
+    scanf("%d", &newnode->data);
+
+    newnode->next = head;
+    head = newnode;
+
+    printf("Node inserted\n");
+}
+
+// Delete first node
+void deleteNode()
+{
+    struct node *temp;
+
+    if(head == NULL)
+    {
+        printf("List is empty\n");
+        return;
+    }
+
+    temp = head;
+    head = head->next;
+    free(temp);
+
+    printf("Node deleted\n");
+}
+
+// Search element
+void search()
+{
+    struct node *temp = head;
+    int key, pos = 1;
+
+    printf("Enter value to search: ");
+    scanf("%d", &key);
+
+    while(temp != NULL)
+    {
+        if(temp->data == key)
+        {
+            printf("Element found at position %d\n", pos);
+            return;
+        }
+        temp = temp->next;
+        pos++;
+    }
+
+    printf("Element not found\n");
+}
+
+int main()
+{
+    int choice;
+
+    while(1)
+    {
+        printf("\n1.Insert\n2.Delete\n3.Search\n4.Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch(choice)
+        {
+            case 1: insert(); break;
+            case 2: deleteNode(); break;
+            case 3: search(); break;
+            case 4: exit(0);
+            default: printf("Invalid choice\n");
+        }
+    }
+
+    return 0;
+}
